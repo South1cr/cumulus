@@ -1,0 +1,9 @@
+<h3>Add Location</h3>
+<form class="form" action="/locations/city-search" method="post">
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city"><br><br>
+    <button type="submit">Search</button>
+</form>
+{{#if errorMessage}}
+<p class="error-message">{{errorMessage}}</p>
+{{/if}}

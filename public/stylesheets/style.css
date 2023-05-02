@@ -1,8 +1,153 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none; 
 }
+
+button {
+  background: #269af2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+button:hover {
+  cursor:pointer;
+  background: #0A62A6;
+}
+
+input {
+  border-radius: 4px;
+  border: none;
+  background: #d3ddec;
+  padding: 10px 20px;
+  min-width: 250px;
+}
+
+.error-message {
+  color: #F2443F;
+}
+
+#navbar {
+  top: 0;
+  position:relative;
+  width: 100%;
+  display: flex;
+  left:0;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #269af2;
+  color: #269af2;
+}
+
+#navbar-banner {
+  display: flex;
+  align-items: center;
+}
+
+#navbar-banner > h1 {
+  font-size: 34px;
+  margin: 15px 0;
+}
+
+#navbar-logo {
+  height: 64px;
+  margin-left: 10px;
+}
+
+#logout {
+  position: absolute;
+  right: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#logout:hover {
+  color: #F2443F;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#location-controls {
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#add-location {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#add-location:hover {
+  color: #0A62A6
+}
+
+.remove-location {
+  color: #fff;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 28px;
+}
+
+.remove-location:hover {
+  color: #F2443F;
+}
+
+.weather-tile-link {
+  color:#fff;
+  margin:0 !important;
+}
+
+.weather-tile {
+  width: 100%;
+  color: white;
+  position: relative;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 3px 3px #555;
+  background: #269af2;
+  background-image: linear-gradient(to right, #269af2 , #0A62A6);
+}
+
+.weather-tile:hover {
+  cursor: pointer;
+}
+
+.weather-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 125px;
+  height: 125px;
+}
+
+.weather-tile p,
+.weather-tile h3 {
+  margin:0;
+}
+
+.weather-tile-temp {
+  font-size: 60px;
+  margin: 0;
+  font-weight: bold;
+} 
+
+
+
+
+

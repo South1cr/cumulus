@@ -1,2 +1,23 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div id="location-controls">
+    <a id="add-location" href="/locations/city-search">
+        Add Location&nbsp;<i class="fa-solid fa-plus"></i>
+    </a>
+</div>
+{{#each locations}}
+<a class="weather-tile-link" href="/details/{{_location._id}}">
+    <div class="weather-tile">
+        <img class="weather-icon" src="{{_imgUrl}}" alt="weather">
+        <h3>{{_location.name}}, {{_location.state}}, {{_location.country}}</h3>
+        <p class="weather-tile-temp">{{round current.temp}}&deg;F</p>
+        {{#if current.rain}}
+            <strong><p>Rain</p></strong>
+        {{/if}}
+        <p>Feels Like: {{round current.feels_like}}&deg;F</p>
+        <p>Humidity: {{current.humidity}}%</p>
+        <p>Pressure: {{current.pressure}}mb</p>
+        <p>Wind speed: {{round current.wind_speed}}mph</p>
+        <a class="remove-location" title="Remove Location" href="/locations/remove-location/{{_location._id}}"><i
+                class="fa-solid fa-trash"></i></a>
+    </div>
+</a>
+{{/each}}
