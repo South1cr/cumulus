@@ -22,6 +22,10 @@ hbs.registerHelper('round', (num) => {
   return Math.round(num);
 })
 
+hbs.registerHelper('formatDate', (date) => {
+  return date.toDateString();
+})
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

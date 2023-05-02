@@ -63,11 +63,11 @@ input {
   position: absolute;
   right: 10px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 #logout:hover {
-  color: #F2443F;
+  color: #0A62A6;
 }
 
 #container {
@@ -84,7 +84,7 @@ input {
 }
 
 #add-location {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -119,12 +119,18 @@ input {
   margin: 10px 0px;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 5px 3px 3px #555;
+  /*box-shadow: 5px 3px 3px #555;*/
   background: #269af2;
   background-image: linear-gradient(to right, #269af2 , #0A62A6);
 }
 
-.weather-tile:hover {
+.weather-tile.current-weather {
+  background: #fff;
+  color: #000;
+  border: 1px dashed #269af2;
+}
+
+.weather-tile-link:hover {
   cursor: pointer;
 }
 
@@ -141,11 +147,21 @@ input {
   margin:0;
 }
 
-.weather-tile-temp {
+.temperature {
   font-size: 60px;
   margin: 0;
   font-weight: bold;
 } 
+
+.temperature-high {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.temperature-low {
+  font-size: 30px;
+  font-weight: bold;
+}
 
 
 

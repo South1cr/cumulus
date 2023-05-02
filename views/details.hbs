@@ -1,1 +1,36 @@
-<h1>detail</h1>
+<h2>{{weather._location.name}}, {{weather._location.state}}, {{weather._location.country}}</h2>
+<div class="weather-tile current-weather">
+    <h3>Current Weather</h3><br>
+    <table>
+        <tr>
+            <td>Temp: {{round weather.current.temp}}&deg;F</td>
+            <td>Feels Like: {{round weather.current.feels_like}}&deg;F</td>
+            <td>Uvi: {{ weather.current.uvi}}</td>
+        </tr>
+        <tr>
+            <td>Humidity: {{weather.current.humidity}}%</td>
+            <td>Dew Point: {{round weather.current.dew_point}}&deg;</td>
+            <td>Cloud Cover: {{weather.current.clouds}}%</td>
+        </tr>
+        <tr>
+            <td>Pressure: {{round weather.current.pressure}}mb</td>
+        </tr>
+    </table>
+</div>
+<h2>10 day</h2>
+{{#each weather.daily}}
+<div class="weather-tile">
+    <img class="weather-icon" src="{{_imgUrl}}" alt="weather">
+    <h3>{{formatDate _date}}</h3>
+    <p class="temperature-high">{{round temp.max}}&deg;F</p>
+    <p class="temperature-low">{{round temp.min}}&deg;F</p>
+    {{#if rain}}
+    <strong>
+        <p>Rain <i class="fa-solid fa-umbrella"></i></p>
+    </strong>
+    {{/if}}
+    <p>Humidity: {{humidity}}%</p>
+    <p>Uvi: {{uvi}}</p>
+    <p><i class="fa-solid fa-wind"></i> {{round wind_speed}}mph</p>
+</div>
+{{/each}}

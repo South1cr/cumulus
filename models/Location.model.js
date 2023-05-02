@@ -2,11 +2,11 @@ const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const locationSchema = new Schema({
-  lat: Number,
-  lon: Number,
-  name: String,
-  state: String,
-  country: String,
+  lat: {type: Number, required: true},
+  lon: {type: Number, required: true},
+  name: {type: String, required: true},
+  state: {type: String, required: true},
+  country: {type: String, required: true},
   user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 

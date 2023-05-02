@@ -8,10 +8,16 @@ const Location = require('../models/Location.model');
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 
+const getDate = (daysPlus) => {
+  let date = new Date();
+  date.setDate(date.getDate() + daysPlus);
+  return date;
+}
+
 const getWeatherImage = (weatherNode) => {
-  const { weather, rain } = weatherNode.current;
-  console.log(rain);
-  const src = `images/${weather[0].icon}.png`;
+  const { weather } = weatherNode;
+  console.log(weather)
+  const src = `/images/${weather[0].icon}.png`;
   return src;
 }
 
@@ -33,11 +39,13 @@ router.get('/', isLoggedIn, function (req, res, next) {
           let weather = fulfilled.map(v => v.data);
           weather.forEach((elem, i) => {
             elem._location = locations[i];
-            elem._imgUrl = getWeatherImage(elem);
+            elem.current._imgUrl = getWeatherImage(elem.current);
           });
-          console.log(weather)
-          res.render('index.hbs', { locations: weather })
-        });
+          res.render('index.hbs', { weather });
+        })
+        .catch((err) => {
+          console.log('error in weather api', err)
+        })
     })
 });
 
@@ -45,16 +53,22 @@ router.get('/details/:id', isLoggedIn, function (req, res, next) {
   const id = req.params.id;
   Location.findById(id)
     .then((location) => {
-      const uri = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&units=imperial&appid=${process.env.API_KEY}`
+      const uri = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&units=imperial&exclude=minutely,hourly&appid=${process.env.API_KEY}`
       axios.get(uri)
         .then((result) => {
           weather = result.data;
           weather._location = location;
-          weather._imgUrl = getWeatherImage(weather);
+          weather.current._imgUrl = getWeatherImage(weather.current);
+          weather.daily.forEach((elem, i) => {
+            elem._imgUrl = getWeatherImage(elem);
+            elem._date = getDate(i);
+          })
           console.log(weather);
-          res.render('details.hbs', { weather })
+          res.render('details.hbs', { weather });
         })
-        .catch()
+        .catch((err) => {
+          console.log('error in details weather api', err)
+        })
     })
 
 
