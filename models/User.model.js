@@ -7,7 +7,8 @@ const userSchema = new Schema({
     unique: true,
     required: true
   },
-  password: {type: String, required: true}
+  password: {type: String, required: true},
+  units: { type: String, default: 'imperial'}
 });
 
 const User = model("User", userSchema);

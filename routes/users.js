@@ -57,6 +57,7 @@ router.post('/signup', isLoggedOut, function (req, res, next) {
 
   if (email === '' || password === '') {
     // exit early
+    res.render('users/signup.hbs', {hideLogout: true, errorMessage: 'Please enter a valid email and password.'});
   }
 
   bcrypt
@@ -83,6 +84,25 @@ router.get('/logout', isLoggedIn, (req, res, next) => {
   req.session.destroy(err => {
     if (err) next(err);
     res.redirect('/');
+  });
+});
+
+router.get('/settings', isLoggedIn, function (req, res, next) {
+  const units = req.session.user.units;
+  res.render('users/settings.hbs', { units });
+});
+
+router.post('/settings', isLoggedIn, function (req, res, next) {
+  const { units } = req.body;
+  const user = req.session.user;
+  User.findByIdAndUpdate(user._id, { units }, {new: true})
+  .then((user) => {
+    console.log(user);
+    req.session.user = user;
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err)
+    res.render('users/settings.hbs', {errorMessage: 'Invalid input.'});
   });
 });
 

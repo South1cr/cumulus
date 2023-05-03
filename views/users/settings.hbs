@@ -1,0 +1,17 @@
+<h2>Settings</h2>
+<form class="form-settings" action="/users/settings" method="post">
+    <label for="units">Units:</label><br>
+    <select name="units" id="units">
+        {{#select units}}
+        <option value="metric">Metric</option>
+        <option value="imperial">Imperial</option>
+        {{/select}}
+    </select><br><br>
+    <button type="submit">Submit</button>
+</form>
+{{#if errorMessage}}
+<p class="error-message">{{errorMessage}}</p>
+{{/if}}
+<br>
+<br>
+<a id="logout" href="/users/logout" title="Logout">Logout&nbsp;&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></a>

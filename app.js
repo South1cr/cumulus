@@ -12,19 +12,20 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const locationsRouter = require('./routes/locations');
 
+const helpers = require('./helpers/helpers');
+
 const app = express();
 // view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-hbs.registerHelper('round', (num) => {
-  return Math.round(num);
-})
-
-hbs.registerHelper('formatDate', (date) => {
-  return date.toDateString();
-})
+// helpers
+hbs.registerHelper('round', helpers.round);
+hbs.registerHelper('formatDate', helpers.formatDate);
+hbs.registerHelper('capitalize', helpers.capitalize);
+hbs.registerHelper('getTempUnit', helpers.getTempUnit);
+hbs.registerHelper('select', helpers.select);
 
 app.use(logger('dev'));
 app.use(express.json());

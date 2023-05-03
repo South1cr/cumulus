@@ -6,7 +6,7 @@ require('dotenv').config()
 //const User = require('../models/User.model');
 const Location = require('../models/Location.model');
 
-const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
+const { isLoggedIn } = require('../middleware/route-guard.js');
 
 /* GET home page. */
 router.get('/city-search', isLoggedIn, function (req, res, next) {
@@ -45,7 +45,7 @@ router.get('/add-location', isLoggedIn, function (req, res, next) {
         if(results.length){
             res.render('locations/city-search.hbs', { errorMessage: 'City already in your selection.' });
         } else {
-            return Location.create({
+            Location.create({
                 lat,
                 lon,
                 name,

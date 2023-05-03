@@ -28,6 +28,14 @@ input {
   min-width: 250px;
 }
 
+select {
+  border-radius: 4px;
+  border: none;
+  background: #d3ddec;
+  padding: 10px 20px;
+  min-width: 250px;
+}
+
 .error-message {
   color: #F2443F;
 }
@@ -59,14 +67,19 @@ input {
   margin-left: 10px;
 }
 
-#logout {
+#nav-menu {
   position: absolute;
-  right: 10px;
+  right: 0px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 24px; 
 }
 
-#logout:hover {
+#nav-menu > a {
+  margin-left: 20px;
+}
+
+#logout:hover,
+#settings:hover {
   color: #0A62A6;
 }
 
@@ -116,10 +129,10 @@ input {
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
+  margin: 5px 0px;
   border-radius: 10px;
   padding: 20px;
-  /*box-shadow: 5px 3px 3px #555;*/
+  box-shadow: 5px 3px 3px #555;
   background: #269af2;
   background-image: linear-gradient(to right, #269af2 , #0A62A6);
 }
@@ -132,6 +145,10 @@ input {
 
 .weather-tile-link:hover {
   cursor: pointer;
+}
+
+.weather-tile-table {
+  width: 100%;
 }
 
 .weather-icon {
@@ -153,17 +170,24 @@ input {
   font-weight: bold;
 } 
 
-.temperature-high {
-  font-size: 30px;
-  font-weight: bold;
-}
-
+.temperature-high,
 .temperature-low {
   font-size: 30px;
   font-weight: bold;
 }
 
+.form-settings {
+  border-bottom: 1px solid #269af2;
+  padding: 20px 0 50px;
+}
 
+#logout {
+  font-weight: bold;
+  font-size: 24px;
+}
 
+.weather-table {
+  width: 100%;
+}
 
 
