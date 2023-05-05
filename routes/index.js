@@ -43,21 +43,22 @@ router.get('/', isLoggedIn, function (req, res, next) {
             elem._units = user.units;
             elem.current._imgUrl = getWeatherImage(elem.current);
           });
+          console.log(weather);
           res.render('index.hbs', { weather });
         })
         .catch((err) => {
           console.log('error in weather api', err)
+          res.render('index.hbs');
         })
     })
 });
 
-router.get('/details/:id', isLoggedIn, function (req, res, next) {
+router.get('/daily/:id', isLoggedIn, function (req, res, next) {
   const user = req.session.user;
   const id = req.params.id;
   Location.findById(id)
     .then((location) => {
       const uri = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&units=${user.units}&exclude=minutely,hourly&appid=${process.env.API_KEY}&sauce=${Math.random()}`
-      console.log(uri);
       axios.get(uri)
         .then((result) => {
           weather = result.data;
@@ -68,7 +69,8 @@ router.get('/details/:id', isLoggedIn, function (req, res, next) {
             elem._date = getDate(i);
             elem._units = user.units;
           })
-          res.render('details.hbs', { weather });
+          console.log(weather);
+          res.render('daily.hbs', { weather });
         })
         .catch((err) => {
           console.log('error in details weather api', err)

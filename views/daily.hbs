@@ -1,0 +1,33 @@
+<h2>{{weather._location.name}}, {{weather._location.state}}, {{weather._location.country}}</h2>
+{{#each weather.daily}}
+<div class="weather-tile">
+    <img class="weather-icon" src="{{_imgUrl}}" alt="weather">
+    <h3>{{formatDate _date}}</h3>
+    <p class="temperature-daily">{{round temp.max}}&deg;{{getTempUnit _units}}&nbsp;&nbsp;{{round
+        temp.min}}&deg;{{getTempUnit _units}}</p>
+    <!--{{#if rain}}
+    <strong>
+        <p><i class="fa-solid fa-umbrella"></i> {{rain}}mm/h</p>
+    </strong>
+    {{/if}}-->
+    <table class="weather-tile-table">
+        <tr>
+            <td><strong>{{capitalize weather.0.description}}</strong></td>
+        </tr>
+        <tr>
+            <td>Uvi: {{ uvi}}</td>
+        </tr>
+        <tr>
+            <td>Humidity: {{humidity}}%</td>
+            <td>Dew Point: {{round dew_point}}&deg;</td>
+        </tr>
+        <tr>
+            <td>
+                <p><i class="fa-solid fa-wind"></i>&nbsp;{{getWindDirection wind_deg}}&nbsp;{{round
+                    wind_speed}}{{getSpeedUnit _units}}</p>
+            </td>
+            <td>Pressure: {{pressure}}hPa</td>
+        </tr>
+    </table>
+</div>
+{{/each}}

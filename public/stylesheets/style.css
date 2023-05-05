@@ -1,5 +1,6 @@
 body {
   font-family: 'Lato', sans-serif;
+  /*color:#269af2;*/
 }
 
 a {
@@ -38,6 +39,10 @@ select {
 
 .error-message {
   color: #F2443F;
+}
+
+.message {
+  color: #269af2;
 }
 
 #navbar {
@@ -79,7 +84,9 @@ select {
 }
 
 #logout:hover,
-#settings:hover {
+#settings:hover,
+#delete-account:hover,
+.location-link:hover {
   color: #0A62A6;
 }
 
@@ -88,6 +95,10 @@ select {
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+#container > h2 {
+  color: #269af2;
 }
 
 #location-controls {
@@ -115,6 +126,12 @@ select {
 
 .remove-location:hover {
   color: #F2443F;
+}
+
+#location-select-divider {
+  color: #269af2;
+  border-bottom: 1px solid #269af2;
+  margin: 10px 0;
 }
 
 .weather-tile-link {
@@ -148,7 +165,7 @@ select {
 }
 
 .weather-tile-table {
-  width: 100%;
+  width: 90%;
 }
 
 .weather-icon {
@@ -166,13 +183,11 @@ select {
 
 .temperature {
   font-size: 60px;
-  margin: 0;
   font-weight: bold;
 } 
 
-.temperature-high,
-.temperature-low {
-  font-size: 30px;
+.temperature-daily {
+  font-size: 42px;
   font-weight: bold;
 }
 
@@ -181,13 +196,18 @@ select {
   padding: 20px 0 50px;
 }
 
-#logout {
+#logout,
+#delete-account {
   font-weight: bold;
   font-size: 24px;
 }
-
-.weather-table {
-  width: 100%;
+/*
+#delete-account {
+  color: #F2443F;
 }
+
+#delete-account:hover {
+ color:#B3332E;
+}*/
 
 

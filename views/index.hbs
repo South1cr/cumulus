@@ -4,21 +4,19 @@
     </a>
 </div>
 {{#each weather}}
-<a class="weather-tile-link" href="/details/{{_location._id}}">
+<a class="weather-tile-link" href="/daily/{{_location._id}}">
     <div class="weather-tile">
         <img class="weather-icon" src="{{current._imgUrl}}" alt="weather">
         <h3>{{_location.name}}, {{_location.state}}, {{_location.country}}</h3>
         <p class="temperature">{{round current.temp _units}}&deg;{{getTempUnit _units}}</p>
-        {{#if current.rain}}
+        <!--{{#if current.rain}}
         <strong>
             <p>Rain</p>
         </strong>
-        {{/if}}
+        {{/if}}-->
         <table class="weather-tile-table">
             <tr>
-                {{#each current.weather}}
-                <td><strong>{{capitalize description}}</strong></td>
-                {{/each}}
+                <td><strong>{{capitalize current.weather.0.description}}</strong></td>
                 <td>Uvi: {{ current.uvi}}</td>
             </tr>
             <tr>
@@ -27,10 +25,14 @@
                 
             </tr>
             <tr>
-                <td>Dew Point: {{round current.dew_point}}&deg;</td>
+                <td>Visibility: {{current.visibility}}m</td>
+                <td>Dew Point: {{round current.dew_point}}&deg;{{getTempUnit _units}}</td>
+            </tr>
+            <tr>
                 <td>
-                    <p><i class="fa-solid fa-wind"></i> {{round current.wind_speed}}mph</p>
-                </td>
+                    <p><i class="fa-solid fa-wind"></i>&nbsp;{{getWindDirection current.wind_deg}}&nbsp;{{round current.wind_speed}}{{getSpeedUnit _units}}</p>
+                </td>            
+                <td>Pressure: {{current.pressure}}hPa</td>
             </tr>
         </table>
         <a class="remove-location" title="Remove Location" href="/locations/remove-location/{{_location._id}}"><i

@@ -37,9 +37,8 @@ router.get('/add-location', isLoggedIn, function (req, res, next) {
     const { lat, lon, name, state, country } = req.query;
 
     Location.find({
-        name,
-        state,
-        country,
+        lat,
+        lon,
         user: req.session.user._id
     }).then((results) => {
         if(results.length){

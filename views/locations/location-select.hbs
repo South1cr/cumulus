@@ -1,8 +1,12 @@
 <h2>Select City</h2>
+<div id="location-select-divider">
+    <i class="fa-solid fa-city"></i>
+</div>
 {{#each locations}}
 <Strong>
-    <a href="/locations/add-location?lat={{lat}}&lon={{lon}}&name={{name}}&state={{state}}&country={{country}}"><p>{{name}}, {{state}},
-        {{country}}</p>
+    <a class="location-link" href="/locations/add-location?lat={{lat}}&lon={{lon}}&name={{name}}&state={{state}}&country={{country}}">
+        <p>{{name}}, {{state}},
+            {{country}}</p>
     </a>
 </strong>
 {{/each}}

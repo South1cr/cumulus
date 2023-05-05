@@ -25,7 +25,9 @@ hbs.registerHelper('round', helpers.round);
 hbs.registerHelper('formatDate', helpers.formatDate);
 hbs.registerHelper('capitalize', helpers.capitalize);
 hbs.registerHelper('getTempUnit', helpers.getTempUnit);
-hbs.registerHelper('select', helpers.select);
+hbs.registerHelper('getSpeedUnit', helpers.getSpeedUnit);
+hbs.registerHelper('getWindDirection', helpers.getWindDirection);
+hbs.registerHelper('setSelected', helpers.setSelected);
 
 app.use(logger('dev'));
 app.use(express.json());

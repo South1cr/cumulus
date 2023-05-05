@@ -18,7 +18,21 @@ const getTempUnit = (units) => {
     }
 }
 
-const select = (selected, options) => {
+const getSpeedUnit = (units) => {
+    if (units === 'imperial') {
+        return 'mph';
+    } else {
+        return 'm/s';
+    }
+}
+
+const getWindDirection = (degree) => {
+    const index=parseInt((degree/22.5)+.5);
+    const directions=["N","NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+    return directions[(index % 16)];
+}
+
+const setSelected = (selected, options) => {
     return options.fn(this).replace(
         new RegExp(' value=\"' + selected + '\"'),
         '$& selected="selected"');
@@ -29,5 +43,7 @@ module.exports = {
     formatDate,
     capitalize,
     getTempUnit,
-    select
+    getSpeedUnit,
+    getWindDirection,
+    setSelected
 };

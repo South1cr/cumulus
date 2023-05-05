@@ -5,8 +5,8 @@ const locationSchema = new Schema({
   lat: {type: Number, required: true},
   lon: {type: Number, required: true},
   name: {type: String, required: true},
-  state: {type: String, required: true},
-  country: {type: String, required: true},
+  state: {type: String},
+  country: {type: String},
   user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 

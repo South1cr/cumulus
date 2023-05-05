@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
 const bcrypt = require('bcryptjs');
+
 const User = require('../models/User.model')
+const Location = require('../models/Location.model');
+
 const saltRounds = 10;
 
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js')
@@ -30,7 +32,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        res.render("login.hbs", {
+        res.render("users/login.hbs", {
           errorMessage: "Username or password is incorrect.",
           hideLogout: true
         });
@@ -39,7 +41,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         req.session.user = user;
         res.redirect('/');
       } else {
-        res.render("login.hbs", {
+        res.render("users/login.hbs", {
           errorMessage: "Username or password is incorrect.",
           hideLogout: true
         });
@@ -97,13 +99,36 @@ router.post('/settings', isLoggedIn, function (req, res, next) {
   const user = req.session.user;
   User.findByIdAndUpdate(user._id, { units }, {new: true})
   .then((user) => {
-    console.log(user);
     req.session.user = user;
-    res.redirect('/');
+    res.render('users/settings.hbs', { units: user.units, message: 'Settings applied.' });
   }).catch((err) => {
     console.log(err)
-    res.render('users/settings.hbs', {errorMessage: 'Invalid input.'});
+    res.render('users/settings.hbs', { errorMessage: 'Invalid input.'});
   });
+});
+
+router.get('/delete-confirm', isLoggedIn, function (req, res, next) {
+  const units = req.session.user.units;
+  res.render('users/settings.hbs', { units, showDeleteConfirm:true });
+});
+
+router.get('/delete', isLoggedIn, function (req, res, next) {
+  const user = req.session.user;
+  Location.deleteMany({
+    user: user._id
+  })
+  .then((result) => {
+    return User.findByIdAndDelete(user._id)
+  })
+  .then((result) => {
+    req.session.destroy(err => {
+      if (err) next(err);
+      res.redirect('/');
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 });
 
 module.exports = router;
