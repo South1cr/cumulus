@@ -29,7 +29,6 @@ router.get('/', isLoggedIn, function (req, res, next) {
   })
     .then((locations) => {
       let promises = [];
-      console.log(user)
       locations.forEach((location) => {
         const uri = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&units=${user.units}&exclude=minutely,hourly,daily,alerts&appid=${process.env.API_KEY}&sauce=${Math.random()}`
         promises.push(axios.get(uri))

@@ -1,6 +1,9 @@
+<div id="back-button">
+    <a href="/"><i class="fa-solid fa-caret-left"></i></a>
+</div>
 <h2>{{weather._location.name}}, {{weather._location.state}}, {{weather._location.country}}</h2>
 {{#each weather.daily}}
-<div class="weather-tile">
+<div class="weather-card">
     <img class="weather-icon" src="{{_imgUrl}}" alt="weather">
     <h3>{{formatDate _date}}</h3>
     <p class="temperature-daily">{{round temp.max}}&deg;{{getTempUnit _units}}&nbsp;&nbsp;{{round
@@ -10,7 +13,7 @@
         <p><i class="fa-solid fa-umbrella"></i> {{rain}}mm/h</p>
     </strong>
     {{/if}}-->
-    <table class="weather-tile-table">
+    <table class="weather-card-table">
         <tr>
             <td><strong>{{capitalize weather.0.description}}</strong></td>
         </tr>

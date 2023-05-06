@@ -4,8 +4,8 @@
     </a>
 </div>
 {{#each weather}}
-<a class="weather-tile-link" href="/daily/{{_location._id}}">
-    <div class="weather-tile">
+<a class="weather-card-link" href="/daily/{{_location._id}}">
+    <div class="weather-card">
         <img class="weather-icon" src="{{current._imgUrl}}" alt="weather">
         <h3>{{_location.name}}, {{_location.state}}, {{_location.country}}</h3>
         <p class="temperature">{{round current.temp _units}}&deg;{{getTempUnit _units}}</p>
@@ -14,7 +14,7 @@
             <p>Rain</p>
         </strong>
         {{/if}}-->
-        <table class="weather-tile-table">
+        <table class="weather-card-table">
             <tr>
                 <td><strong>{{capitalize current.weather.0.description}}</strong></td>
                 <td>Uvi: {{ current.uvi}}</td>
