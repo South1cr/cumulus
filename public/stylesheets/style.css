@@ -4,8 +4,8 @@ body {
 }
 
 a {
-  color: #00B7FF;
-  text-decoration: none; 
+  color: #269af2;
+  text-decoration: none;
 }
 
 button {
@@ -17,7 +17,7 @@ button {
 }
 
 button:hover {
-  cursor:pointer;
+  cursor: pointer;
   background: #0A62A6;
 }
 
@@ -47,10 +47,10 @@ select {
 
 #navbar {
   top: 0;
-  position:relative;
+  position: relative;
   width: 100%;
   display: flex;
-  left:0;
+  left: 0;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #269af2;
@@ -62,7 +62,7 @@ select {
   align-items: center;
 }
 
-#navbar-banner > h1 {
+#navbar-banner>h1 {
   font-size: 34px;
   margin: 15px 0;
 }
@@ -76,10 +76,10 @@ select {
   position: absolute;
   right: 0px;
   font-weight: bold;
-  font-size: 24px; 
+  font-size: 24px;
 }
 
-#nav-menu > a {
+#nav-menu>a {
   margin-left: 20px;
 }
 
@@ -87,7 +87,7 @@ select {
 #settings:hover,
 #delete-account:hover,
 .location-link:hover,
-#back-button > a:hover {
+#back-button>a:hover {
   color: #0A62A6;
 }
 
@@ -99,7 +99,7 @@ select {
   position: relative;
 }
 
-#container > h2 {
+#container>h2 {
   color: #269af2;
 }
 
@@ -137,8 +137,8 @@ select {
 }
 
 .weather-card-link {
-  color:#fff;
-  margin:0 !important;
+  color: #fff;
+  margin: 0 !important;
 }
 
 .weather-card {
@@ -153,13 +153,7 @@ select {
   padding: 20px;
   box-shadow: 5px 3px 3px #555;
   background: #269af2;
-  background-image: linear-gradient(to right, #269af2 , #0A62A6);
-}
-
-.weather-card.current-weather {
-  background: #fff;
-  color: #000;
-  border: 1px dashed #269af2;
+  background-image: linear-gradient(to right, #269af2, #0A62A6);
 }
 
 .weather-card-link:hover {
@@ -178,15 +172,22 @@ select {
   height: 125px;
 }
 
+@media screen and (max-width: 400px) {
+  .weather-icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 .weather-card p,
 .weather-card h3 {
-  margin:0;
+  margin: 0;
 }
 
 .temperature {
   font-size: 60px;
   font-weight: bold;
-} 
+}
 
 .temperature-daily {
   font-size: 42px;
@@ -203,15 +204,35 @@ select {
   font-weight: bold;
   font-size: 24px;
 }
+/*
+#daily-controls {
+  display: flex;
+  width: 400px;
+  max-width: 400px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}*/
 
 #back-button {
   color: #269af2;
   width: 100%;
   max-width: 400px;
   position: absolute;
-  top: 16px;
-  left: 4px;
-  font-size: 32px;
+  top: 10px;
+  font-size: 42px;
+  margin-left: 5px;
 }
-
-
+/*
+#delete-button {
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  text-align: right;
+  top: 20px;
+  font-size: 24px;
+}
+*
+#delete-button > a:hover {
+  color: #F2443F;
+}*/
